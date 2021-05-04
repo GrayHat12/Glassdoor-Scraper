@@ -1,4 +1,5 @@
 import Glassdoor.Glassdoor;
+import Glassdoor.GlassdoorData;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -6,11 +7,11 @@ public class App {
         Glassdoor glassdoor = new Glassdoor(company);
         try {
             glassdoor.scrape();
-            String glassdoorUrl = glassdoor.getGlassDoorURL();
-            String rating = glassdoor.getRating();
-            System.out.println("Rating "+rating);
-            System.out.println("URL "+glassdoorUrl);
+            GlassdoorData data = glassdoor.getData();
+            System.out.println(data.toString());
+            //System.out.println(data.toString());
         }catch(Exception ex) {
+            ex.printStackTrace();
             System.out.println(ex.getMessage());
         }
     }
